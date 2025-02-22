@@ -34,7 +34,7 @@ class XCBSurface(Surface):
     def __init__(self, conn, drawable, visual, width, height):
         c_visual = visualtype_to_c_struct(visual)
 
-        p = cairo.cairo_xcb_surface_create(
+        p = cairo_xcb.cairo_xcb_surface_create(
             conn._conn, drawable, c_visual, width, height)
         Surface.__init__(self, p)
 
@@ -53,7 +53,7 @@ class XCBSurface(Surface):
         :param width: integer
         :param height: integer
         """
-        cairo.cairo_xcb_surface_set_size(self._pointer, width, height)
+        cairo_xcb.cairo_xcb_surface_set_size(self._pointer, width, height)
         self._check_status()
 
 
